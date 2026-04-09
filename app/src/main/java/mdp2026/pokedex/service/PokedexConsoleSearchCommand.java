@@ -6,10 +6,10 @@ import java.util.List;
 import mdp2026.pokedex.model.Pokedex;
 import mdp2026.pokedex.model.Pokemon;
 
-public class PokedexConsoleSearchCommand implements CommandAction<Pokedex>{
+public class PokedexConsoleSearchCommand<T extends Pokedex> implements CommandAction<T>{
 
     @Override
-    public CommandResult handleCommand(String[] input, int state, Pokedex model) {
+    public CommandResult handleCommand(String[] input, int state, T model) {
         String search = input.length < 1 ? "" : input[0].toLowerCase();
         List<Pokemon> pokemonTrovati = cercaTraPokemon(model.tornaTuttiScoperti(), search);
         String[] array = componiArray(pokemonTrovati);

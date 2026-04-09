@@ -3,10 +3,10 @@ package mdp2026.pokedex.service;
 import mdp2026.pokedex.model.Pokedex;
 import mdp2026.pokedex.model.Pokemon;
 
-public class PokedexConsoleDetailsAction implements CommandAction<Pokedex>{
+public class PokedexConsoleDetailsAction<T extends Pokedex> implements CommandAction<T>{
 
     @Override
-    public CommandResult handleCommand(String[] input, int state, Pokedex model) {
+    public CommandResult handleCommand(String[] input, int state, T model) {
         int i = 0;
         try{
             i = Integer.parseInt(input[0]);
@@ -16,7 +16,7 @@ public class PokedexConsoleDetailsAction implements CommandAction<Pokedex>{
         Pokemon p = model.getPokemon(i);
         return new CommandResult(new String[]{
 "--------------",
-"Pokémon " + p.getNome(),
+"Pokémon n." + p.getNumero() + " " + p.getNome(),
 "Tipo " + p.getTipo1() + (p.getTipo2() == null ? "" : " - " + p.getTipo2()),
 "Altezza " + p.getAltezza() + " cm",
 "Peso " + p.getPeso() + " kg",

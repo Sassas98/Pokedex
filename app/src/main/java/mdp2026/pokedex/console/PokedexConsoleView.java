@@ -9,21 +9,21 @@ import mdp2026.pokedex.service.CommandResult;
 import mdp2026.pokedex.utility.TextInput;
 import mdp2026.pokedex.utility.TextOutput;
 
-public abstract class PokedexConsoleView implements IOConsoleView {
+public abstract class PokedexConsoleView<T extends Pokedex> implements IOConsoleView {
 
     private int state;
     private TextInput in;
     private TextOutput out;
-    private Pokedex pokedex;
-    private List<Map<String,CommandAction<Pokedex>>> commands;
+    private final T pokedex;
+    private final List<Map<String,CommandAction<T>>> commands;
 
-    public PokedexConsoleView(Pokedex pokedex){
+    public PokedexConsoleView(T pokedex){
         this.pokedex = pokedex;
         this.state = 0;
         commands = buildCommands();
     }
 
-    protected abstract List<Map<String,CommandAction<Pokedex>>> buildCommands();
+    protected abstract List<Map<String,CommandAction<T>>> buildCommands();
 
     @Override
     public IOConsoleView setInput(TextInput in) {

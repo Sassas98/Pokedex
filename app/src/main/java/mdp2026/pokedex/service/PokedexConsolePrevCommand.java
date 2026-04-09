@@ -2,13 +2,13 @@ package mdp2026.pokedex.service;
 
 import java.util.List;
 
-import mdp2026.pokedex.model.Pokedex;
+import mdp2026.pokedex.model.PokedexMemoryWrapper;
 import mdp2026.pokedex.model.Pokemon;
 
-public class PokedexConsolePrevCommand implements CommandAction<Pokedex>{
+public class PokedexConsolePrevCommand implements CommandAction<PokedexMemoryWrapper>{
 
     @Override
-    public CommandResult handleCommand(String[] input, int state, Pokedex model) {
+    public CommandResult handleCommand(String[] input, int state, PokedexMemoryWrapper model) {
         List<Pokemon> pokemons = model.tornaTuttiScoperti();
         Pokemon p = trovaPrecedentePokemon(pokemons, model.getUltimoIndice());
         return new PokedexConsoleDetailsAction().handleCommand(new String[]{ p.getNumero() + "" }, state, model);

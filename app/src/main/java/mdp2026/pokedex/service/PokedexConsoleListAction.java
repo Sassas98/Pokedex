@@ -5,10 +5,10 @@ import java.util.List;
 import mdp2026.pokedex.model.Pokedex;
 import mdp2026.pokedex.model.Pokemon;
 
-public class PokedexConsoleListAction implements CommandAction<Pokedex>{
+public class PokedexConsoleListAction<T extends Pokedex> implements CommandAction<T>{
 
     @Override
-    public CommandResult handleCommand(String[] input, int state, Pokedex model) {
+    public CommandResult handleCommand(String[] input, int state, T model) {
         List<Pokemon> pokemons = model.tornaTuttiScoperti();
         String[] array = componiArray(pokemons);
         return new CommandResult(array, 0);
