@@ -7,6 +7,7 @@ import java.util.List;
 public class Pokedex {
     private List<Pokemon> pokemons;
     private boolean[] scoperti;
+    private int ultimoIndice;
 
     public Pokedex(List<Pokemon> pks){
         if(pks == null)
@@ -16,10 +17,15 @@ public class Pokedex {
     }
 
     public Pokemon getPokemon(int index){
-        if(index < 1 || index >= scoperti.length -1)
+        if(index < 1 || index > scoperti.length)
             throw new IllegalArgumentException("Indice non valido");
         scoperti[index-1] = true;
+        ultimoIndice = index;
         return pokemons.get(index-1);
+    }
+
+    public int getUltimoIndice(){
+        return this.ultimoIndice;
     }
 
     public List<Pokemon> tornaTuttiScoperti(){
