@@ -9,6 +9,9 @@ import com.google.gson.reflect.TypeToken;
 
 import mdp2026.pokedex.utility.ResourceReader;
 
+/**
+ * Implementazione che restituisce un semplice Pokedex tramite la lettura di un apposito json
+ */
 public class JsonFilePokedexGetter extends ResourceReader implements PokedexGetter {
 
     @Override

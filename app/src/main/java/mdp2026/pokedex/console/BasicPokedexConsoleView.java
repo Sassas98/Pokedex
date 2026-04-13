@@ -15,6 +15,9 @@ import mdp2026.pokedex.service.PokedexConsoleNextCommand;
 import mdp2026.pokedex.service.PokedexConsolePrevCommand;
 import mdp2026.pokedex.service.PokedexConsoleSearchCommand;
 
+/**
+ * Implementazione che mette insieme i comandi e segue i requisi espressi dalla versione corrente
+ */
 public class BasicPokedexConsoleView extends PokedexConsoleView<PokedexMemoryWrapper>{
 
     public BasicPokedexConsoleView(PokedexMemoryWrapper pokedex){
@@ -29,6 +32,11 @@ public class BasicPokedexConsoleView extends PokedexConsoleView<PokedexMemoryWra
         return list;
     }
 
+
+    /**
+     * Costruisce i comandi comuni
+     * @return la mappa dei comandi -> azioni in menu
+     */
     private Map<String, CommandAction<PokedexMemoryWrapper>> costruisciComandiStatoZero() {
         Map<String, CommandAction<PokedexMemoryWrapper>> map = costruisciComandiGenerali();
         map.put("dettaglio", new PokedexConsoleDetailsAction<>());
@@ -37,6 +45,10 @@ public class BasicPokedexConsoleView extends PokedexConsoleView<PokedexMemoryWra
         return map;
     }
 
+    /**
+     * Costruisce i comandi dello stato 1: il dettaglio
+     * @return la mappa dei comandi -> azioni in dettaglio
+     */
     private Map<String, CommandAction<PokedexMemoryWrapper>> costruisciComandiStatoUno() {
         Map<String, CommandAction<PokedexMemoryWrapper>> map = costruisciComandiGenerali();
         map.put("indietro", new PokedexConsoleListAction<>());
@@ -45,6 +57,10 @@ public class BasicPokedexConsoleView extends PokedexConsoleView<PokedexMemoryWra
         return map;
     }
 
+    /**
+     * Costruisce i comandi comuni
+     * @return la mappa dei comandi -> azioni in tutte le fasi
+     */
     private Map<String, CommandAction<PokedexMemoryWrapper>> costruisciComandiGenerali() {
         HashMap<String, CommandAction<PokedexMemoryWrapper>> map = new HashMap<>();
         map.put("help", new PokedexConsoleHelpAction<>());

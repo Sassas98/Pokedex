@@ -11,10 +11,15 @@ import mdp2026.pokedex.utility.StandardTextOutput;
 
 public class App {
     public static void main(String[] args) {
+        // genero un builder per il pokedex
         PokedexGetter builder = new JsonFilePokedexGetter();
+        // creo il pokedex
         Pokedex pokedex = builder.buildPokedex();
+        // lo inserisco in un wrapper per la memorizzazione dell'indice nei dettagli
         PokedexMemoryWrapper pokedexWrapper = new PokedexMemoryWrapper(pokedex);
+        // creo la view
         IOConsoleView view = new BasicPokedexConsoleView(pokedexWrapper);
+        // e la inizializzo facendola anche partire
         view.setInput(new ScannerTextInput())
             .setOutput(new StandardTextOutput())
             .start();

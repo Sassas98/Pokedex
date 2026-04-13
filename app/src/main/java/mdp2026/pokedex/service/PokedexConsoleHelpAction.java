@@ -1,5 +1,8 @@
 package mdp2026.pokedex.service;
 
+/**
+ * Metood che rappresenta il comando help
+ */
 public class PokedexConsoleHelpAction<T> implements CommandAction<T>{
 
     @Override

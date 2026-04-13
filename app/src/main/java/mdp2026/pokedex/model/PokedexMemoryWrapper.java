@@ -3,6 +3,12 @@ package mdp2026.pokedex.model;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Estensione del Pokedex, atto a wrappare un
+ * instanza interna al fine di memorizzare 
+ * gli indici usati in getPokemon, così che diventi possibile
+ * ottemperare a funzioni di next o prev lato console
+ */
 public class PokedexMemoryWrapper extends Pokedex{
 
     private final Pokedex pks;
@@ -24,6 +30,10 @@ public class PokedexMemoryWrapper extends Pokedex{
          return pks.tornaTuttiScoperti();
     }
 
+    /**
+     * Getter che restituisce l'ultimo indice usato
+     * @return ultimo indice usato
+     */
     public int getUltimoIndice(){
         return this.ultimoIndice;
     }

@@ -2,6 +2,9 @@ package mdp2026.pokedex.model;
 
 import java.io.Serializable;
 
+/**
+ * Classe utile a mappare in java i Pokemon dal formato json fornito
+ */
 public class Pokemon  implements Serializable {
     private int numero;
     private String nome;

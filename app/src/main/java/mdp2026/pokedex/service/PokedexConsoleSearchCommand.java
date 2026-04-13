@@ -6,6 +6,10 @@ import java.util.List;
 import mdp2026.pokedex.model.Pokedex;
 import mdp2026.pokedex.model.Pokemon;
 
+/**
+ * Classe che rappresenta il comando di elencare tutti i pokemon conformi alla ricerca
+ * La wildcard resta generica per permettere interoperabilità con estensioni
+ */
 public class PokedexConsoleSearchCommand<T extends Pokedex> implements CommandAction<T>{
 
     @Override
@@ -16,6 +20,12 @@ public class PokedexConsoleSearchCommand<T extends Pokedex> implements CommandAc
         return new CommandResult(array, 0);
     }
 
+
+    /**
+     * Metodo di servizio per comporre effiacemente l'output leggibile
+     * @param pokemons pokemons da mappare
+     * @return output
+     */
     private String[] componiArray(List<Pokemon> pokemons){
         String[] array = new String[pokemons.size() + 1];
         if(pokemons.isEmpty()){
@@ -30,7 +40,13 @@ public class PokedexConsoleSearchCommand<T extends Pokedex> implements CommandAc
         return array;
     }
 
-
+    /**
+     * Metodo di servizio per cercare in una lista di Pokémon quelli
+     * conformi alla stringa di ricerca
+     * @param pokemons pokémons tra cui cercare
+     * @param search stringa di ricerca
+     * @return pokémons trovati
+     */
     private List<Pokemon> cercaTraPokemon(List<Pokemon> pokemons, String search){
         List<Pokemon> pokemonTrovati = new LinkedList<>();
         for (Pokemon pokemon : pokemons) {

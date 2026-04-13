@@ -3,6 +3,10 @@ package mdp2026.pokedex.service;
 import mdp2026.pokedex.model.Pokedex;
 import mdp2026.pokedex.model.Pokemon;
 
+/**
+ * Classe che rappresenta il dettaglio di un Pokémon
+ * La wildcard resta generica per permettere interoperabilità con estensioni
+ */
 public class PokedexConsoleDetailsAction<T extends Pokedex> implements CommandAction<T>{
 
     @Override
